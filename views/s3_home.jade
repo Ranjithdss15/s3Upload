@@ -1,0 +1,23 @@
+extends s3_layout
+
+block content
+    #MainContent
+        h2 #{title}
+        #fileupload.container(style='width:500px; margin:auto')
+            #fileupload1.container(style='width:500px; margin:auto')
+                form#uploadform1.md-form(action="/s3/upload",method="post",enctype="multipart/form-data")
+                    label(for="fileName")
+                    input#filename.form-control(type="text",name='filename',placeholder='File Name')
+                    br
+                    label(for="bucketname")
+                    input#bucketname.form-control(type="text",name='bucketname',placeholder='Bucket Name')
+                    br
+                    #fileuploaderdiv1.custom-file
+                        input#fileuploader1.custom-file-input(type="file",name="filetoupload")
+                    hr
+                    button#uploadbutton1.btn.btn-primary.btn-sm Upload
+                    
+    #sideContent
+        h2 #{title1}
+        p #{content1}
+        //- img(src="/images/alexa3.png", alt="alexa_png", align="center", height="500px")
