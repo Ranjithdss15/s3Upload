@@ -4,7 +4,7 @@ var AWS = require("aws-sdk");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('s3_home', { title: 'S3' });
+  res.render('s3_home', { title: 'Altimetrik' });
 });
 
 
@@ -20,16 +20,17 @@ AWS.config.getCredentials(function(err) {
 var s3 = new AWS.S3();
 
 router.post('/uploadtest',function(req,res,next){
-    let filename = req.body.filename
+    // let filename = req.body.filename
     let bucketname = req.body.bucketname
-    res.send(filename);
+    res.send(bucketname);
 });
 
   router.post('/upload',function(req,res,next){
-    let filename = req.body.filename
+    // let filename = req.body.filename
     let bucketname = req.body.bucketname
 
-    if(req.files && filename){
+    // if(req.files && filename){
+    if(req.files && bucketname){
         let file = req.files.filetoupload;
         let filename = file.name
         ;(async () => {
@@ -39,13 +40,13 @@ router.post('/uploadtest',function(req,res,next){
                 s3.putObject(params, function(err, data) {
                     if (err) {
                         console.log(err, err.stack);
-                        res.render('s3_home',{title:'File Not Uploaded!',content1:'Your file has not been uploaded, Please try again.'})
+                        res.render('s3_home',{title:'File Not Uploaded!',content1:'Your file has not been uploaded.',logs:err })
                         return false
                     }
                     else { 
                         console.log(data);
                         console.log("Uploaded file to S3")
-                        res.render('s3_home',{title:'File Uploaded!',content1:'Your file has been successfully uploaded',userValid:true})                        
+                        res.render('s3_home',{title:'File Uploaded!',content1:'Your file has been successfully uploaded'})                        
                         return true
                       }        
                 });
@@ -57,5 +58,9 @@ router.post('/uploadtest',function(req,res,next){
         console.log("File not found")
     }
 })
+
+router.get('/upload',function(req,res,next){
+  res.redirect("/s3");
+});
 
 module.exports = router;

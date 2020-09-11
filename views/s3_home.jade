@@ -3,12 +3,12 @@ extends s3_layout
 block content
     #MainContent
         h2 #{title}
+        hr
+        br
         #fileupload.container(style='width:500px; margin:auto')
             #fileupload1.container(style='width:500px; margin:auto')
+                h3 S3 Upload
                 form#uploadform1.md-form(action="/s3/upload",method="post",enctype="multipart/form-data")
-                    label(for="fileName")
-                    input#filename.form-control(type="text",name='filename',placeholder='File Name')
-                    br
                     label(for="bucketname")
                     input#bucketname.form-control(type="text",name='bucketname',placeholder='Bucket Name')
                     br
@@ -18,6 +18,13 @@ block content
                     button#uploadbutton1.btn.btn-primary.btn-sm Upload
                     
     #sideContent
+        br
+        br
+        br
+        br
         h2 #{title1}
-        p #{content1}
+        br
+        h4 #{content1}
+        br
+        p #{logs}
         //- img(src="/images/alexa3.png", alt="alexa_png", align="center", height="500px")

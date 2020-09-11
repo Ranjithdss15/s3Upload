@@ -1,0 +1,61 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    /* background-image: url("/images/image-bg6.jpg"); */
+    background-color: rgb(173, 233, 202);
+
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 5% 90% 5%;
+  }
+  a {
+    color: #00B7FF;
+  }
+
+  #mainDiv1 {
+    align-self: center
+  }
+
+  #signUpDiv {
+    display: none
+  }
+  #loginDiv {
+    display: none
+  }
+
+  main{
+    display: grid;
+    height: 100vh;
+    
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #headerMain {
+    grid-row-start: 1;
+    grid-column: 2/2;    
+  }
+
+  #MainContent {
+    font-family: "Times New Roman", Times, serif;
+    grid-column-start: 1;
+    transition-delay: 2s;
+    color:black;
+  }
+
+  #sideContent {
+    /* background-color: #00B7FF; */
+    background-blend-mode: hue;
+    grid-column-start: 2;
+    background-blend-mode: hue;
+    color: black;
+    transition-delay: 2s;
+    }
+
+  #footer {
+    /* grid-area: 2%; */
+    grid-row-start: 3;
+    grid-column: 1/2;
+    align-self: flex-end;
+    height: 5%;
+  }
