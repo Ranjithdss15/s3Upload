@@ -7,5 +7,10 @@ router.get('/', function(req, res, next) {
   res.redirect("/s3")
 });
 
+router.get('/', function(req, res, next) {
+  // res.render('index', { title: 'Express' });
+  res.redirect("/s3")
+});
+
 
 module.exports = router;

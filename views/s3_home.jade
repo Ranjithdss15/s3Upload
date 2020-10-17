@@ -16,6 +16,17 @@ block content
                         input#fileuploader1.custom-file-input(type="file",name="filetoupload")
                     hr
                     button#uploadbutton1.btn.btn-primary.btn-sm Upload
+                br
+                hr
+                br
+                h3 S3 Download
+                label(for="bucketnametoget")
+                input#bucketnametoget.form-control(type="text",name='bucketnametoget',placeholder='Bucket Name')
+                label(for="filenametoget")
+                input#filenametoget.form-control(type="text",name='filenametoget',placeholder='File Name')
+                hr
+                button#getbutton1.btn.btn-primary.btn-sm Download
+
                     
     #sideContent
         br

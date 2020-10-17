@@ -4,7 +4,7 @@ var AWS = require("aws-sdk");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('s3_home', { title: 'Altimetrik' });
+  res.render('s3_home', { title: 'S3 file manager'});
 });
 
 
@@ -24,6 +24,34 @@ router.post('/uploadtest',function(req,res,next){
     let bucketname = req.body.bucketname
     res.send(bucketname);
 });
+
+router.get('/getobject/:bucketname/:object',function(req,res,next){
+  // let filename = req.body.filename
+  let bucketname = req.params.bucketname
+  let object = req.params.object
+  ;(async () => {
+    var params = {
+      Bucket: bucketname, 
+      Key: object
+     };
+        console.log("Getting file from S3")
+        s3.getObject(params, function(err, data) {
+          if (err) {
+            console.log(err, err.stack);
+            res.render('s3_home',{title:'Error Occured',content1:'Your file cannot be downloaded.',logs:err})
+          } // an error occurred
+          else    {
+            console.log(data);  
+            res.attachment(object);
+            // res.send(data.Body);
+            res.render('s3_home',{title:'Downloading..',content1:'Your file will be downloaded.'})
+          }    
+
+        });
+    
+})()
+});
+
 
   router.post('/upload',function(req,res,next){
     // let filename = req.body.filename
